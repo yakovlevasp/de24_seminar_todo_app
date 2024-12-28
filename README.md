@@ -4,6 +4,8 @@
 
 Это простой сервис для управления задачами (TODO) с использованием FastAPI и базы данных SQLite. Сервис предоставляет REST API для создания, обновления, удаления и получения задач.
 
+DockerHub: https://hub.docker.com/r/yakovlevasp/todo-service/tags
+
 ## Возможности
 - **Создание задач** с заголовком, описанием и статусом выполнения.
 - **Получение всех задач** в виде списка.
@@ -27,7 +29,7 @@ docker build -t todo-fastapi .
 
 ### Шаг 2: Запуск контейнера
 ```bash
-docker run -d -p 8000:8000 -v $(pwd)/data:/app/data todo-fastapi
+docker run -d -p 8000:80 -v todo_data:/app/data todo-fastapi
 ```
 
 API будет доступно по адресу: http://localhost:8000
@@ -35,19 +37,12 @@ API будет доступно по адресу: http://localhost:8000
 ### Методы API
 
 - **GET /items** - получить список всех задач.
+![get_items.JPG](img%2Fget_items.JPG)
 - **GET /items/{item_id}** - получить задачу по ID.
+![item_id.JPG](img%2Fitem_id.JPG)
 - **POST /items** - создать новую задачу.
+![post_items.JPG](img%2Fpost_items.JPG)
 - **PUT /items/{item_id}** - обновить задачу по ID.
+![put_item.JPG](img%2Fput_item.JPG)
 - **DELETE /items/{item_id}** - удалить задачу по ID.
-
-## Структура проекта
-```
-/
-├── main.py            # Основное приложение FastAPI
-├── database.py        # Конфигурация базы данных
-├── models.py          # Определение ORM-моделей
-├── Dockerfile         # Docker контейнер
-├── requirements.txt   # Зависимости проекта
-└── data/
-    └── todo.db        # Файл базы данных SQLite
-```
+![del_item.JPG](img%2Fdel_item.JPG)
